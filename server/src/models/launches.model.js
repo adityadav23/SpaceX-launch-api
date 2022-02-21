@@ -1,5 +1,6 @@
 const launches = new Map()
 
+
 const launch ={
     flightNumber: 100,
     mission:'Kepler Exploration X',
@@ -11,6 +12,11 @@ const launch ={
     success:true,
 }
 
+
 launches.set(launch.flightNumber, launch)
 
-module.exports = {launches}
+function getAllLaunches(){
+    return Array.from(launches.values())
+}
+
+module.exports = {getAllLaunches}
