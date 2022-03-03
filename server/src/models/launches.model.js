@@ -1,5 +1,5 @@
 const launches = require('./launches.mongo')
-
+const planets = require('./planets.mongo')
 let latestFlightNumber = 100;
 
 const launch ={
@@ -7,7 +7,7 @@ const launch ={
     mission:'Kepler Exploration X',
     rocket:'Explorer IS1',
     launchDate: new Date('December 27,2030'),
-    target:'Kepler-442-b',
+    target:'Kepler-442 b',
     customer:['ZTM','NASA'],
     upcoming:true,
     success:true,
@@ -26,6 +26,14 @@ async function getAllLaunches(){
 }
 
 async function saveLaunch(launch){
+    const planet = await planets.findOne({
+        keplerName: launch.target,
+    })
+
+    if(!planet){
+        throw new Error('No matching planet found')
+    }
+
     await launches.updateOne({
         flightNumber: launch.flightNumber   
     },
