@@ -3,7 +3,6 @@ const path = require('path')
 const {parse} = require('csv-parse');
 const planets = require('./planets.mongo')
 
-const habitablePlanets = [];
 
 function isHabitablePlanet(planet) {
   return planet['koi_disposition'] === 'CONFIRMED'
@@ -53,7 +52,11 @@ function isHabitablePlanet(planet) {
  }
 
  async function getAllPlanets(){
-   return await planets.find({})
+   return await planets.find({},
+    {
+      '_id':0,
+      '__v':0,
+    })
  }
 
  module.exports ={
