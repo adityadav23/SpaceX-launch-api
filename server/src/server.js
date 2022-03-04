@@ -2,7 +2,7 @@ require('dotenv').config()
 const http = require('http')
 const app = require('./app')
 const mongoose = require('mongoose')
-const {connectDb} = require('../db/connect')
+const {connectDb} = require('../src/db/connect')
 const {loadPlanetsData} = require('./models/planets.model')
 
 const PORT = process.env.PORT || 8000
