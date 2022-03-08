@@ -14,7 +14,6 @@ const mongoose = require('mongoose')
      },
      rocket:{
          type:String,
-         required: true,
      },
      target:{
          type:String,
